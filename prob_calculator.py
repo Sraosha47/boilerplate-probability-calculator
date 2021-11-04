@@ -13,6 +13,14 @@ class Hat:
                 self.contents.append(colour)
                 i += 1
 
+    def draw(self, amount):
+        i = 0
+        drawn = list()
+        while i < amount:
+            drawn.append(self.contents.pop(random.randrange(len(self.contents)-1)))
+            i += 1
+        return(drawn)
+
 
 
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
