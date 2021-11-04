@@ -24,6 +24,24 @@ class Hat:
 
 
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
-    pass
+    i = 0
+    count = 0
+    drawn = {}
 
-testing(Hat)
+    print(expected_balls.items())
+    while i < num_experiments:
+        while drawn != expected_balls:
+            copyhat = copy.deepcopy(hat)
+            drawn_list = copyhat.draw(num_balls_drawn)
+            for item in drawn_list:
+                if list(expected_balls.keys()).count(item) != 0: 
+                    drawn.update({item : drawn_list.count(item)})
+                    print(drawn.items())
+            count += 1
+        i += 1
+    
+    return(count/num_experiments)
+    
+
+
+testing(Hat, experiment)
