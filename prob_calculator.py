@@ -35,32 +35,23 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
     count = 0
     drawn_dic = []
     keys_expected = list(expected_balls.keys())
-    print("expected keys:", keys_expected)
         
     if len(hat.contents) <= num_balls_drawn:
         return(1.0)
 
     else:
         while i <= num_experiments:
-            print("\nExperiment " + str(i))
             copyhat = copy.deepcopy(hat)
             keycount = 0
-            drawn_list = copyhat.draw(num_balls_drawn)
-            print(drawn_list)
-            print(list(expected_balls.keys()))
+            drawn_list = copyhat.draw(num_balls_drawn)            
             for item in drawn_list:
                 if list(expected_balls.keys()).count(item) != 0: 
                     drawn_dic.append(item)
-                print("Drawndic:",drawn_dic)
             for key, value in expected_balls.items():
                 if value <= drawn_dic.count(key):
-                    print("Balls expected:", expected_balls[key], "Balls drawn:", drawn_dic.count(key))
                     keycount += 1
-                    print("keycount:", keycount)
             if keycount == len(keys_expected):
-                print("\nball types expected: ", (len(keys_expected)))
                 count += 1
-                print("Count:",count)
             drawn_dic.clear()
             i += 1
         return(count/num_experiments)
