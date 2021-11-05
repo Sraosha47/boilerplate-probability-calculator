@@ -20,7 +20,6 @@ class Hat:
                 return(drawn)
             else:    
                 while i < amount:
-                    x = len(self.contents)
                     ran_ball = random.choice(self.contents)
                     drawn.append(ran_ball)
                     self.contents.remove(ran_ball)
